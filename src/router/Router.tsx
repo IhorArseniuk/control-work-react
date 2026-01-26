@@ -6,8 +6,8 @@ import {SerialDetailsPage} from "../pages/SerialDetailsPage.tsx";
 
 export const router = createBrowserRouter([
     {path:'/',element:<MainLayout/>, children:[
-            {path:'moviebase',element:<HomePage/>},
+            {index:true,element:<HomePage/>},
             {path:'movie/:id-:name',element:<MovieDeatailsPage/>},
-            {path:'serial/:id-:name',element:<SerialDetailsPage/>'}
+            {path:'serial/:id-:name',element:<SerialDetailsPage/>}
         ]}
 ])
