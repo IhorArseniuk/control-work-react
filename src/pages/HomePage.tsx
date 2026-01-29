@@ -1,20 +1,13 @@
-import {useEffect, useState} from "react";
-import {createGuestSession} from "../services/axiosMovieService.ts";
-import type {GuestSessionType} from "../models/authentication/guestSesionModel.ts";
+
+import {HomeComponent} from "../components/HomeComponent.tsx";
+import {PaginationComponent} from "../components/PaginationComponent.tsx";
 
 
 export const HomePage = () => {
-  const [sesion, setSesion]=useState<GuestSessionType>()
-    useEffect( ()=>{
-      createGuestSession()
-          .then(res=>{
-              if(res){setSesion(res)}
-          })
-  },[])
-    return (
-        <>
-                <div>{String(sesion?.expires_at)}</div>
-
-        </>
-    );
+ return(
+<>
+<HomeComponent/>
+ <PaginationComponent/>
+</>
+ )
 };

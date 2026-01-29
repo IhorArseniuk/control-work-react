@@ -9,5 +9,5 @@ export const router = createBrowserRouter([
             {index:true,element:<HomePage/>},
             {path:'movie/:id-:name',element:<MovieDeatailsPage/>},
             {path:'serial/:id-:name',element:<SerialDetailsPage/>}
-        ]}
+                ]}
 ])
