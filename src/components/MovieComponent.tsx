@@ -1,12 +1,14 @@
 import type {MovieType} from "../models/movies/movieType.ts";
 import type {FC} from "react";
 import {useNavigate} from "react-router-dom";
-import {StarRating} from "./Star-Rating-Component/StarRatingComponent.tsx";
+import {StarRating} from "./star-rating-component/StarRatingComponent.tsx";
 
    type MovieProps={
        movie:MovieType
+       imageW:number,
+       imageH:number
    }
-export const MovieComponent:FC<MovieProps> = ({movie}) => {
+export const MovieComponent:FC<MovieProps> = ({movie, imageW, imageH}) => {
        const navigation=useNavigate()
     return (
 <div>
@@ -14,7 +16,7 @@ export const MovieComponent:FC<MovieProps> = ({movie}) => {
             navigation(`movie/${movie.id}-${movie.title.replaceAll(/\s+/g,'-')}`, {state:movie})
         }}>
 
-            <img alt={movie.title} src={'https://media.themoviedb.org/t/p/w300/'+movie.poster_path}/>
+            <img alt={movie.title} src={`https://media.themoviedb.org/t/p/w500`+movie.poster_path} height={imageH} width={imageW}/>
             <p>{movie.title}</p>
         </div>
 
