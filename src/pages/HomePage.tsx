@@ -1,6 +1,6 @@
 
 import {HomeComponent} from "../components/HomeComponent.tsx";
-import {PaginationComponent} from "../components/PaginationComponent.tsx";
+import {PaginationComponent} from "../components/paginations-components/PaginationComponent.tsx";
 import {GenresComponent} from "../components/genres-component/GenresComponent.tsx";
 
 
@@ -13,7 +13,7 @@ export const HomePage = () => {
  </div>
  <div>
   <GenresComponent/>
-  <PaginationComponent/>
+
  </div>
  </>
  )

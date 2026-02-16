@@ -3,24 +3,38 @@ import './genres.css'
 import type {GenresResponceType, GenreType} from "../../models/genres/genresResponceType.ts";
 import {axiosService} from "../../services/axiosMovieService.ts";
 import {useGenres} from "../../custom-hooks/UseGenres.ts";
+import {MovieComponent} from "../MovieComponent.tsx";
+import {GenrePaginationComponent} from "../paginations-components/GenrePagination.tsx";
 
 
 export const GenresComponent = () => {
-   const [genres, setGenres]= useState<GenreType[]>()
-    const [selectedGenre, setSelectedGenre] = useState<number>();
-  const moviesBygenre=selectedGenre&&useGenres(selectedGenre)
-   useEffect(()=>{
+   const [genres, setGenres]= useState<GenreType[]>([])
+    const [selectedGenre, setSelectedGenre] = useState<number | null>(null)
+    const moviesByGenre =  useGenres(selectedGenre)
+
+    useEffect(()=>{
        axiosService<GenresResponceType>('3/genre/movie/list','get')
            .then(res=>{
                if(res) setGenres(res.genres) })
    },[])
+    useEffect(()=>{
+        if(!selectedGenre || !moviesByGenre.length) return
+
+    localStorage.setItem(`genre${selectedGenre}`,JSON.stringify(moviesByGenre))
+
+    },[selectedGenre, moviesByGenre]);
 
     return (
         <div className={'genresContainer'}>
-            {genres&&genres.map((genre)=>(<div><h3 onClick={()=>{setSelectedGenre(genre.id),localStorage.setItem(genre.name,JSON.stringify(moviesBygenre) )}}>{genre.name}</h3>
+            {genres&&genres.map((genre)=>(
+                <div key={genre.id}><h3 onClick={()=>{setSelectedGenre(genre.id)}}>{genre.name}</h3>
             <div>
-
+                {selectedGenre===genre.id &&
+                moviesByGenre.map(moviesBGenre=>(<MovieComponent movie={moviesBGenre} imageW={200}/>))
+                }
             </div>
+                    {selectedGenre===genre.id &&(
+                    <GenrePaginationComponent/>)}
             </div>))}
         </div>
     );

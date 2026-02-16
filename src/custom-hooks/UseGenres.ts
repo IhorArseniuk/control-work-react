@@ -5,14 +5,16 @@ import type {MoviesResponceType} from "../models/movies/moviesResponceType.ts";
 import {useSearchParams} from "react-router-dom";
 
 
-export const useGenres = (genre:number) => {
-  const [movies, setMovies]=useState<MovieType[]>()
-  const[query]=useSearchParams({})
+export const useGenres = (genre:number | null) => {
+
+  const [movies, setMovies]=useState<MovieType[]>([])
+  const[genreQuery]=useSearchParams({})
     useEffect(()=>{
-      const pg =query.get('page')||'1'
+      if(!genre) return
+      const pg =genreQuery.get('genrePage')||'1'
       axiosService<MoviesResponceType>(`3/discover/movie?with_genres=${genre.toString()}&page=${pg}`,'get')
           .then(res=>setMovies(res.results))
-    },[genre, query])
+    },[genre, genreQuery])
   return (
       movies
     );

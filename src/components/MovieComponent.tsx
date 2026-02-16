@@ -6,7 +6,7 @@ import {StarRating} from "./star-rating-component/StarRatingComponent.tsx";
    type MovieProps={
        movie:MovieType
        imageW:number,
-       imageH:number
+       imageH?:number
    }
 export const MovieComponent:FC<MovieProps> = ({movie, imageW, imageH}) => {
        const navigation=useNavigate()
