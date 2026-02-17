@@ -13,7 +13,7 @@ export const GenrePaginationComponent = () => {
                         setGenreQuery({genrePage:(++currentPage).toString()})
                     }}}}>Next Page</button>
 
-            <button onClick={()=>{
+            <button onClick={()=> {
                 const page=genreQuery.get('genrePage')
                 if(page){
                     let currentPage = +page

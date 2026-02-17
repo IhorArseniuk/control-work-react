@@ -3,8 +3,8 @@ import './genres.css'
 import type {GenresResponceType, GenreType} from "../../models/genres/genresResponceType.ts";
 import {axiosService} from "../../services/axiosMovieService.ts";
 import {useGenres} from "../../custom-hooks/UseGenres.ts";
-import {MovieComponent} from "../MovieComponent.tsx";
-import {GenrePaginationComponent} from "../paginations-components/GenrePagination.tsx";
+import {MovieComponent} from "../movie-component/MovieComponent.tsx";
+import {GenrePaginationComponent} from "./GenrePagination.tsx";
 
 
 export const GenresComponent = () => {

@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
-import {axiosService,} from "../services/axiosMovieService.ts";
-import type {MovieType} from "../models/movies/movieType.ts";
-import type {MoviesResponceType} from "../models/movies/moviesResponceType.ts";
+import {axiosService,} from "../../services/axiosMovieService.ts";
+import type {MovieType} from "../../models/movies/movieType.ts";
+import type {MoviesResponceType} from "../../models/movies/moviesResponceType.ts";
 import {useSearchParams} from "react-router-dom";
-import {MovieComponent} from "./MovieComponent.tsx";
+import {MovieComponent} from "../movie-component/MovieComponent.tsx";
 
 
 export const HomeComponent = () => {

@@ -1,7 +1,7 @@
-import type {MovieType} from "../models/movies/movieType.ts";
+import type {MovieType} from "../../models/movies/movieType.ts";
 import type {FC} from "react";
 import {useNavigate} from "react-router-dom";
-import {StarRating} from "./star-rating-component/StarRatingComponent.tsx";
+import {StarRating} from "../star-rating-component/StarRatingComponent.tsx";
 
    type MovieProps={
        movie:MovieType
@@ -18,9 +18,11 @@ export const MovieComponent:FC<MovieProps> = ({movie, imageW, imageH}) => {
 
             <img alt={movie.title} src={`https://media.themoviedb.org/t/p/w500`+movie.poster_path} height={imageH} width={imageW}/>
             <p>{movie.title}</p>
+    <StarRating initial={movie.vote_average} disabled={false}></StarRating>
+            <p>{movie.overview}</p>
+            <h4>{movie.release_date}</h4>
         </div>
 
-    <StarRating initial={movie.vote_average} disabled={false}></StarRating>
 </div>
     );
 };
