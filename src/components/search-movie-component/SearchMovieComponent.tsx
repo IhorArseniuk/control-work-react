@@ -7,7 +7,13 @@ import {MovieComponent} from "../movie-component/MovieComponent.tsx";
 export const SearchMovieComponent = () => {
   const [searchMovies, setSearchMovies]=useState<MovieType[]>([])
 const [searchMovieName, setSearchMovieName]=useState<string>("")
-   useEffect(()=>{
+   const searchedMovies=localStorage.getItem('movieTitle')
+    useEffect(() => {
+        if(!searchedMovies)return
+        setSearchMovieName(searchedMovies)
+    }, [searchedMovies]);
+
+    useEffect(()=>{
       axiosService<MoviesResponceType>(`3/search/movie?query=${searchMovieName}`,'get')
           .then(res=>
               res&& setSearchMovies(res.results))

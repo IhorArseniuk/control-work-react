@@ -2,6 +2,8 @@
 import {HomeComponent} from "../components/home-component/HomeComponent.tsx";
 import {PaginationComponent} from "../components/paginations-components/PaginationComponent.tsx";
 import {GenresComponent} from "../components/genres-component/GenresComponent.tsx";
+import {SearchInputComponent} from "../components/search-movie-component/SearchInputComponent.tsx";
+import {SearchMovieComponent} from "../components/search-movie-component/SearchMovieComponent.tsx";
 
 
 export const HomePage = () => {
@@ -13,8 +15,9 @@ export const HomePage = () => {
  </div>
  <div>
   <GenresComponent/>
-
  </div>
+ <div><SearchInputComponent/>
+ <SearchMovieComponent/></div>
  </>
  )
 };
