@@ -1,5 +1,6 @@
 import {useForm} from "react-hook-form";
 import {useEffect, useState} from "react";
+import {useSearchParams} from "react-router-dom";
 
  type FormProps={
      movieTitle: string,
@@ -7,8 +8,11 @@ import {useEffect, useState} from "react";
 export const SearchInputComponent = () => {
     const {handleSubmit, register}=useForm<FormProps>({mode:'onSubmit'})
     const [moviesName, setMoviesName ]=useState<string>("")
+
    const customHandler= (formDataProps:FormProps)=>{
         setMoviesName(formDataProps.movieTitle)
+
+
    }
     useEffect(()=>{
         if(!moviesName.length) return
