@@ -21,7 +21,7 @@ export const HomeComponent = () => {
     }}, [query])
     return (
         <>
-            <div>{movies && movies.map((movie) => <MovieComponent movie={movie}  imageW={300} />)}</div>
+            <div>{movies && movies.map((movie) => <MovieComponent key={movie.id} movie={movie}  imageW={300} />)}</div>
 
         </>
     )

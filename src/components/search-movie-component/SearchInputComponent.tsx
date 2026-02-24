@@ -1,26 +1,22 @@
 import {useForm} from "react-hook-form";
-import {useEffect, useState} from "react";
-import {useSearchParams} from "react-router-dom";
-
  type FormProps={
      movieTitle: string,
  }
-export const SearchInputComponent = () => {
+ type Props={
+     onSearch: (name:string) => void
+ }
+export const SearchInputComponent = ({onSearch}:Props) => {
     const {handleSubmit, register}=useForm<FormProps>({mode:'onSubmit'})
-    const [moviesName, setMoviesName ]=useState<string>("")
+
 
    const customHandler= (formDataProps:FormProps)=>{
-        setMoviesName(formDataProps.movieTitle)
-
+        onSearch(formDataProps.movieTitle)
+       localStorage.setItem('movieTitle',JSON.stringify(formDataProps.movieTitle))
 
    }
-    useEffect(()=>{
-        if(!moviesName.length) return
-        localStorage.setItem('movieTitle',JSON.stringify(moviesName))
-    },[moviesName])
     return (
         <form onSubmit={handleSubmit(customHandler)}><input  type={'text'} placeholder={'Search for movie'} {...register('movieTitle')}  />
 
         <button type={'submit'}>Submit</button></form>
     );
-};
+}

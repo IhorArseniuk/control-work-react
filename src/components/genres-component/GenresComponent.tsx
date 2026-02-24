@@ -30,7 +30,7 @@ export const GenresComponent = () => {
                 <div key={genre.id}><h3 onClick={()=>{setSelectedGenre(genre.id)}}>{genre.name}</h3>
             <div>
                 {selectedGenre===genre.id &&
-                moviesByGenre.map(moviesBGenre=>(<MovieComponent movie={moviesBGenre} imageW={200}/>))
+                moviesByGenre.map(moviesBGenre=>(<MovieComponent key={moviesBGenre.id} movie={moviesBGenre} imageW={200}/>))
                 }
             </div>
                     {selectedGenre===genre.id &&(

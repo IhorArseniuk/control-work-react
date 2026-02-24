@@ -1,8 +1,10 @@
 import {useSearchParams} from "react-router-dom";
 
+
 export const SearchPagination = () => {
 
         const [searchQuery, setQuery]=useSearchParams({SearchPage:'1'})
+
 
         return (
             <div>
